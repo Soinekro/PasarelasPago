@@ -10,6 +10,11 @@
             'url' => route('products.index'),
             'active' => request()->routeIs('products.index'),
         ],
+        [
+            'name' => 'Articles',
+            'url' => route('articles.index'),
+            'active' => request()->routeIs('articles.index'),
+        ],
     ];
 @endphp
 
