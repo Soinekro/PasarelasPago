@@ -19,7 +19,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="m-5">
                     <div class="cursor-pointer " x-data="{ open: false }">
-                        <div class="my-2 flex h-12 items-center justify-center rounded-full px-4 bg-green-400"
+                        <div class="my-2 flex h-12 items-center justify-center rounded-full px-4 bg-red-400"
                             @click="open = !open">
                             <div class="flex items-center">
                                 <div class="ml-2">
@@ -34,14 +34,14 @@
                         </div>
                     </div>
 
-                    <a href="https://www.instagram.com/ctrljames/">
+                    {{-- <a href="https://www.instagram.com/ctrljames/">
                         <div class="my-2 flex h-12 items-center justify-center rounded-full px-4 bg-green-400">
                             <div class="flex items-center">
                                 <!--
                                 <img alt="photo" class="w-12 rounded-full" src="https://icon-library.com/images/2018/2298785_oreos-oreo-cookie-adult-costume-hd-png-download.png" />
                                 -->
                                 <div class="ml-2 ">
-                                    <div class="">Instagram</div>
+                                    <div class="">Paypal</div>
                                     <!--
                                     <div class="flex text-xs font-light text-gray-600">yourpal.com
                                         <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>

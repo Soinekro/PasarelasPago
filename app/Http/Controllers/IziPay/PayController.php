@@ -47,6 +47,12 @@ class PayController extends Controller
         }
 
         $krAnswer = str_replace('\/', '/', request()->get('kr-answer'));
+
+        $calculate_hasg = hash_hmac('sha256', $krAnswer, config('services.izi_pay.hash_key'));
+
+        if ($calculate_hasg !== request()->get('kr-hash')) {
+            throw new \Exception('Invalid hash');
+        }
         return $krAnswer;
     }
 }
