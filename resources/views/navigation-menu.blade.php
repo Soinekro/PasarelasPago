@@ -1,11 +1,6 @@
 @php
     $links = [
         [
-            'name' => 'Home',
-            'url' => '/',
-            'active' => false,
-        ],
-        [
             'name' => 'Products',
             'url' => route('products.index'),
             'active' => request()->routeIs('products.index'),
