@@ -12,8 +12,9 @@ class PayController extends Controller
     public function index()
     {
         $formToken = $this->getFormToken();
+        $payU = $this->generateFirma();
 
-        return view('welcome', compact('formToken'));
+        return view('welcome', compact('formToken', 'payU'));
     }
 
     private function getFormToken()
@@ -54,5 +55,24 @@ class PayController extends Controller
             throw new \Exception('Invalid hash');
         }
         return $krAnswer;
+    }
+
+    public function generateFirma(/* Request $request */)
+    {
+        $apiKey = config('services.pay_u.api_key');
+        $merchantId = config('services.pay_u.merchant_id');
+        $referenceCode = Str::random(10);
+        $txValue = '10000';
+        $currency = 'PEN';
+        $signature = md5("$apiKey~$merchantId~$referenceCode~$txValue~$currency");
+        return [
+            'referenceCode' => $referenceCode,
+            'signature' => $signature,
+        ];
+    }
+
+    public function gracias()
+    {
+        return view('gracias');
     }
 }

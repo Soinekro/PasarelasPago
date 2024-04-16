@@ -20,5 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[IziPayPayController::class, 'index']);
 Route::get('products', [ProductController::class, 'index'])->name('products.index');
 Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('gracias', [IziPayPayController::class, 'gracias'])->name('gracias');
 Route::post('izi-pay/success', [IziPayPayController::class, 'success'])->name('success');
 

@@ -33,27 +33,49 @@
 
                         </div>
                     </div>
-
-                    {{-- <a href="https://www.instagram.com/ctrljames/">
-                        <div class="my-2 flex h-12 items-center justify-center rounded-full px-4 bg-green-400">
+                    <div class="cursor-pointer " x-data="{ open: false }">
+                        <div class="my-2 flex h-12 items-center justify-center rounded-full px-4 bg-red-400"
+                            @click="open = !open">
                             <div class="flex items-center">
-                                <!--
-                                <img alt="photo" class="w-12 rounded-full" src="https://icon-library.com/images/2018/2298785_oreos-oreo-cookie-adult-costume-hd-png-download.png" />
-                                -->
-                                <div class="ml-2 ">
-                                    <div class="">Paypal</div>
-                                    <!--
-                                    <div class="flex text-xs font-light text-gray-600">yourpal.com
-                                        <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-                                        </svg>
-                                    </div>
-                                    -->
+                                <div class="ml-2">
+                                    <div class="">PAY U</div>
                                 </div>
                             </div>
                         </div>
-                    </a> --}}
+                        <button style="display: none" x-show="open" class="p-4 bg-gray-100 flex justify-center rounded-lg shadow-sm">
+                            <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">  <!-- Formulario de pago PayU -->
+
+                                <input name="merchantId" type="hidden" value="{{config('services.pay_u.merchant_id')}}">    <!-- Número de cuenta -->
+
+                                <input name="accountId" type="hidden" value="{{config('services.pay_u.account_id')}}">  <!-- Cuenta -->
+
+                                <input name="description" type="hidden" value="Texto Prueba">   <!-- Descripción -->
+
+                                <input name="referenceCode" type="hidden" value="{{$payU['referenceCode']}}">   <!-- Referencia -->
+
+                                <input name="amount" type="hidden" value="10000">   <!-- Valor -->
+
+                                <input name="tax" type="hidden" value="0">  <!-- Impuesto -->
+
+                                <input name="taxReturnBase" type="hidden" value="0">    <!-- Valor base de devolución de impuesto -->
+
+                                <input name="currency" type="hidden" value="PEN">   <!-- Moneda -->
+
+                                <input name="signature" type="hidden" value="{{$payU['signature']}}"> <!-- Firma -->
+
+                                <input name="test" type="hidden" value="1"> <!-- 1: pruebas; 0: producción -->
+
+                                <input name="buyerEmail" type="hidden" value="{{auth()->user()->email}}">
+
+                                <input name="responseUrl" type="hidden" value="{{route('gracias')}}">
+
+                                <input name="confirmationUrl" type="hidden" value="http://www.test.com/confirmation">
+
+                                <input name="Submit" type="submit" value="Enviar">
+
+                            </form>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
